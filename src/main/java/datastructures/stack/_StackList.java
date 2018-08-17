@@ -36,11 +36,11 @@ public class _StackList<T> {
     }
 
 
-    public Node<T> pop() {
-        Node<T> n = head;
+    public T pop() {
+        T val = head.value;
         head = head.next;
         N--;
-        return n;
+        return val;
     }
 
     public static void main(String[] arg) {
