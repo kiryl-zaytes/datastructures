@@ -1,0 +1,1 @@
+A linkedlist is a **recursive datastructure** that is either empty(null) or a reference to a node having a generic item and a reference to a linked list.
