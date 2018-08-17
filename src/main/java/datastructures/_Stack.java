@@ -1,5 +1,7 @@
 package datastructures;
 
+import java.util.Iterator;
+
 /**
  * Stack implementation with open boundaries
  * PA:
@@ -7,7 +9,7 @@ package datastructures;
  * b.[N++] store then ++
  * c. [--N] first -- then get object
  */
-public class _Stack<T> {
+public class _Stack<T> implements Iterable<T> {
     private T[] storage;
     private int N = 0;
 
@@ -42,5 +44,20 @@ public class _Stack<T> {
         _Stack<String> x = new _Stack<String>(10);
         x.push("1");
         x.pop();
+    }
+
+    public Iterator<T> iterator() {
+        return new ReversedIterator();
+    }
+
+    private class ReversedIterator implements Iterator<T>{
+        int i = N;
+        public boolean hasNext() {
+            return i > 0;
+        }
+
+        public T next() {
+            return storage[--i];
+        }
     }
 }
