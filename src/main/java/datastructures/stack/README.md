@@ -13,3 +13,11 @@ Even when the client is done with the item, the reference in the array may keep 
 This condition (holding a reference to an item that is no longer needed) is known as loitering. 
 In this case, loitering is easy to avoid, by setting the array entry corresponding to the popped item to null, 
 thus overwriting the unused refer- ence and making it possible for the system to reclaim the memory associated with the popped item when the client is finished with it.
+
+**Stack implementation based on LinkedList**
+
+    - one Node = head;
+    - pop returns value not Node;
+    - keep track of size
+    - as it is stack make it growing to the left;
+    - incapsulation of fields as usual, only API is public;

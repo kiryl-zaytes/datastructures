@@ -1,7 +1,7 @@
 package datastructures.linkedlist;
 
 /**
- * Custom LinkedList implementationß
+ * Custom LinkedList implementation.
  */
 public class _LinkedList<T> {
 
