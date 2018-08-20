@@ -21,3 +21,6 @@ thus overwriting the unused refer- ence and making it possible for the system to
     - keep track of size
     - as it is stack make it growing to the left;
     - incapsulation of fields as usual, only API is public;
+    - t.next = x.next; x.next = t; - insert new node. The following is wrong x.next = t; t.next = x.next; since you loose track of next and pointing to itself t.
+    
+    

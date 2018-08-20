@@ -1,13 +1,19 @@
 package datastructures.stack;
 
+import java.util.Iterator;
+
 /**
  * Custom Stack implementation based on LinkedList
  */
-public class _StackList<T> {
+public class _StackList<T> implements Iterable<T> {
 
     class Node<T> {
         Node next = null;
         T value;
+
+        public String toString(){
+            return value.toString();
+        }
     }
 
     private Node<T> head = null;
@@ -41,6 +47,29 @@ public class _StackList<T> {
         head = head.next;
         N--;
         return val;
+    }
+
+    public Iterator<T> iterator() {
+        return new DirectIterator();
+    }
+
+    class DirectIterator implements Iterator<T> {
+        int i = 0;
+        Node<T> h = head;
+        Node<T> t = null;
+
+        public boolean hasNext() {
+            return i <= N;
+        }
+
+        public T next() {
+            if (hasNext()){
+                t = h;
+                h = h.next;
+            }
+            i++;
+            return (T) t;
+        }
     }
 
     public static void main(String[] arg) {

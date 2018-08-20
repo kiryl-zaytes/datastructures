@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public class StackBracketsChecker {
 
-    public static boolean checkBrackets(String exp){
+    public static boolean checkBrackets(String exp) {
         HashMap<Character, Character> kv = new HashMap<Character, Character>();
         _StackList<Character> stackList = new _StackList<Character>();
 
@@ -17,11 +17,12 @@ public class StackBracketsChecker {
         kv.put('[', ']');
         kv.put('{', '}');
 
-        for(int i=0; i<exp.length(); i++){
-            if ("([{".indexOf(exp.charAt(i)) > -1) stackList.push(exp.charAt(i));
+        for (int i = 0; i < exp.length(); i++) {
+            if ("([{".indexOf(exp.charAt(i)) > -1)
+                stackList.push(exp.charAt(i));
             else {
                 Character val = stackList.pop();
-                if (exp.charAt(i) != kv.get(val)){
+                if (exp.charAt(i) != kv.get(val)) {
                     return false;
                 }
             }
@@ -31,7 +32,7 @@ public class StackBracketsChecker {
     }
 
 
-    public static void main(String[] args){
+    public static void main_(String[] args) {
         boolean res = StackBracketsChecker.checkBrackets("[()]{}{[()()]()}");
         boolean res2 = StackBracketsChecker.checkBrackets("[(])");
         System.out.print(res);
