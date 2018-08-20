@@ -1,12 +1,15 @@
 package datastructures.Deque;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * A double-ended queue or deque (pronounced “deck”) is like a stack or a
  * queue but
  * supports adding and removing items at both ends. A deque stores a collec-
  * tion of items
  */
-public class Deque<T> {
+public class Deque<T> implements Iterable<T> {
 
     class Node<T> {
         Node prev = null;
@@ -90,6 +93,26 @@ public class Deque<T> {
 
     public boolean isEmpty() {
         return N == 0;
+    }
+
+
+    public Iterator<T> iterator() {
+        return new DequeIterator();
+    }
+
+    class DequeIterator implements Iterator<T> {
+        Node current = head;
+
+        public boolean hasNext() {
+            return (current != null);
+        }
+
+        public T next() {
+            if (current == null) throw new NoSuchElementException();
+            T val = (T) current.value;
+            current = current.next;
+            return val;
+        }
     }
 
     public static void main(String[] arg) {
