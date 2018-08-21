@@ -1,5 +1,7 @@
 package problems;
 
+import java.util.Arrays;
+
 /**
  * * Basic array manipulations
  */
@@ -32,8 +34,10 @@ public class _Array {
 
     /**
      * Square matrices!
-     * Third cycle to keep track each element from ith row multiply to jth column.
-     * k - number of elements as matrix is square it is equal (product row*column)
+     * Third cycle to keep track each element from ith row multiply to jth
+     * column.
+     * k - number of elements as matrix is square it is equal (product
+     * row*column)
      */
     public static int[][] dotProduct(int[][] a, int[][] b) {
         int l = a.length;
@@ -49,7 +53,8 @@ public class _Array {
     }
 
     /**
-     * Pay attention to how recursion works: once value find you need to return it to the very top of stack.
+     * Pay attention to how recursion works: once value find you need to
+     * return it to the very top of stack.
      */
     public static int binarySearch(int[] arr, int n, int low, int high) {
         if (low > high) return -1;
@@ -62,6 +67,46 @@ public class _Array {
         }
 
         return arr[m];
+    }
+
+
+
+
+    /**
+     // to avoid duplicates binarySearch could return rank instead of value. This
+     // gives ability to check if rank < i if it is than that value has been
+     // seen.
+     // For ThreeSum0 pair a[i] and a[j] is part of a triple
+     // thatsumsto0ifandonlyifthevalue-(a[i]+ a[j])isinthearray
+     */
+
+    public static int twoSum0(int[] a) {
+        Arrays.sort(a);
+        int cnt = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (binarySearch(a, -a[i], 0, a.length) > -1) cnt++;
+        }
+        return cnt;
+    }
+
+    public static int threeSum0(int[] a) {
+        Arrays.sort(a);
+        int cnt = 0;
+        for (int i = 0; i < a.length; i++) {
+            for (int j = i + 1; j < a.length; j++) {
+                if (binarySearch(a, -a[i] - a[j], 0, a.length-1) > -1) cnt++;
+            }
+
+        }
+        return cnt;
+    }
+
+
+
+    public static void main(String[] args) {
+        int[] a = new int[]{1, -1, 5, 10, 30, -30, -2, -3};
+        int cnt = threeSum0(a);
+        System.out.println(cnt);
     }
 
 }
