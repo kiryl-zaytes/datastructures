@@ -5,13 +5,16 @@ package datastructures.unionfind;
  */
 public class UF {
     private int[] connections;
+    private int[] sz;
 
     public UF(int n) {
         connections = new int[n];
-
+        sz = new int[n];
         for (int i = 0; i < connections.length; i++) {
             connections[i] = i;
+            sz[i] = 1;
         }
+
     }
 
     public void union(int n, int m) {
@@ -25,7 +28,17 @@ public class UF {
             n = connections[n];
         }
         q = n;
-        connections[n] = p;
+
+        // connect smaller tree to bigger and change size
+        if (sz[p] > sz[q]){
+            connections[q] = p;
+            sz[p]+=sz[q];
+        }
+        else {
+            connections[p] = q;
+            sz[q]+=sz[q];
+        }
+
     }
 
     public boolean connected(int p, int q) {
