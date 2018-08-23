@@ -27,3 +27,10 @@ sites are in the same component if and only if this process leads them to the sa
  Corollary. For weighted quick-union with N sites, the worst-case order of growth of the cost of find(), connected(), and union() is log N
  **To implement path compression**, we just add another loop to find() that sets the id[] entry corresponding to each node encountered along the way to link directly to the root. 
  The net result is to flatten the trees almost completely, ap- proximating the ideal achieved by the quick-find algorithm. 
+ 
+ 
+ 2dim array to 1d:
+ 
+     private int xyTo1D(int x, int y) {
+         return n * (x - 1) + (y - 1);
+     }
