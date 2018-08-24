@@ -6,7 +6,7 @@ package problems.sorting;
 public class Insertion {
 
     public static Comparable[] sort(Comparable[] a) {
-        for (int i = 0; i < a.length; i++) {
+        for (int i = 1; i < a.length; i++) {
             for (int j = i; j > 0; j--) {
                 if (a[j].compareTo(a[j - 1]) < 0) {
                     Comparable x = a[j - 1];
@@ -19,7 +19,7 @@ public class Insertion {
     }
 
     public static void main(String[] args) {
-        Integer[] x = new Integer[]{3, 2, 4, 3, 1};
+        Integer[] x = new Integer[]{21,3, 2, 4, 3, 1, 40, 5};
         System.out.print(Insertion.sort(x));
     }
 
