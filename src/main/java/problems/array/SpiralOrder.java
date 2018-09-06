@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by kiryl_zayets on 9/5/18.
+ * Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
  */
 public class SpiralOrder {
 
