@@ -1,4 +1,4 @@
-package problems;
+package problems.linkedlist;
 
 /**
  * Maintain 3 pointers: next, next.next from first list and current last at

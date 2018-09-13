@@ -1,4 +1,4 @@
-import problems._Array;
+import problems.array._Array;
 import org.junit.Assert;
 import org.junit.Test;
 

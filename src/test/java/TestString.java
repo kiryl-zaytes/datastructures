@@ -1,6 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
-import problems._String;
+import problems.string._String;
 
 /**
  * Created by kiryl_zayets on 8/16/18.
