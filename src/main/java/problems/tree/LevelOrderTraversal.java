@@ -17,7 +17,7 @@ public class LevelOrderTraversal {
 
         TreeNode(int x) { val = x; }
     }
-    
+
     public static List<List<Integer>> levelOrder(TreeNode root) {
         Queue<TreeNode> qu = new LinkedList<TreeNode>();
         List<List<Integer>> s = new LinkedList<List<Integer>>();
