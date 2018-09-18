@@ -13,13 +13,13 @@ public class ConvertSortedArrayToBT {
     }
 
     public static TreeNode sortedArrayToBST(int[] nums) {
-        if (nums.length  == 0 ) return null;
-        return toBST(nums, 0, nums.length-1);
+        if (nums.length == 0) return null;
+        return toBST(nums, 0, nums.length - 1);
     }
 
     public static TreeNode toBST(int[] nums, int l, int h) {
         if (l > h) return null;
-        else System.out.println(l +""+ h);
+        else System.out.println(l + "" + h);
 
         int m = l + (h - l) / 2;
 
@@ -38,9 +38,7 @@ public class ConvertSortedArrayToBT {
 
     public static void main(String[] args) {
         TreeNode head = ConvertSortedArrayToBT.sortedArrayToBST(new
-                int[]{-10, -3,-2,0,5,9,10});
+                int[]{-10, -3, -2, 0, 5, 9, 10});
         System.out.print(head.left);
     }
-
-
 }
