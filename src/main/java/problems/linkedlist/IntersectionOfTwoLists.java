@@ -22,7 +22,7 @@ public class IntersectionOfTwoLists {
         if (headA.equals(headB)) return headA;
         ListNode na = headA;
         ListNode nb = headB;
-        
+
         while (headA != headB) {
             headA = headA.next;
             headB = headB.next;
