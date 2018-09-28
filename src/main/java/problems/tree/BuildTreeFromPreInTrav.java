@@ -1,7 +1,14 @@
 package problems.tree;
 
 /**
- * Created by kiryl_zayets on 9/27/18.
+ * preorder array keeps tree parent nodes and childs follow immediately if they exist.
+ * To get an idea how many childs and what they are we need inorder array.
+ * 1. First element of preorder array is root of tree. Get it and search its position in
+ * inorder array. All to the left of its position are left nodes, to the right - right nodes.
+ * 2. Calculate indices : left tree length(up to that root node) and right tree (beyond that root node) length.
+ * 3. Change low and high positions of both array to use recursion. Move left side until null than move right to build each node from bottom
+ * to up.
+ * 4. Algorithm could be improved by using hash map instead of sequential search.
  */
 public class BuildTreeFromPreInTrav {
 
@@ -37,6 +44,7 @@ public class BuildTreeFromPreInTrav {
                 break;
             }
         }
+
 
         int leftTreeLength = inRoot - iLow;
 
