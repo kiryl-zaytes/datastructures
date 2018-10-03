@@ -37,10 +37,23 @@ public class PriorityQueue<T extends Comparable<T>> {
     }
 
 
-    public void bottomUp(List<T> list) {
+    private void bottomUp(List<T> list) {
         int k = list.size();
         for (k = k / 2; k > 0; k--) {
             sink(k);
+        }
+    }
+
+
+    // reorder to conform heap reqs.
+    // swap greatest which is root with last, decrememt N to detach it from heap
+    // and make new root sink.
+    public void sort(List<T> list) {
+        bottomUp(list);
+
+        while (N > 1) {
+            swap(1, N--);
+            sink(1);
         }
     }
 
