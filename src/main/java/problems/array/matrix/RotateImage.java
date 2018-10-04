@@ -1,4 +1,4 @@
-package problems.array;
+package problems.array.matrix;
 
 /**
  * Created by kiryl_zayets on 9/10/18.
