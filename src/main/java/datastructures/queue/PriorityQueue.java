@@ -84,7 +84,7 @@ public class PriorityQueue<T extends Comparable<T>> {
 
         while (k * 2 <= N) {
             int j = 2 * k;
-            if (k < N && less(j, j + 1))
+            if (j < N && less(j, j + 1))
                 j++; // get max of two as main properrty of heap to be
             // greater or less of both elements
             if (!less(k, j)) break;

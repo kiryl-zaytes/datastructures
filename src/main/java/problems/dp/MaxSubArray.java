@@ -25,8 +25,6 @@ public class MaxSubArray {
 
         if (left + right < max) return left + right;
         else return max;
-
-
     }
 
     public static int maxSubArray(int[] n) {
