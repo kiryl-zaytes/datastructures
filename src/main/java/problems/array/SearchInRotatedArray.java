@@ -3,6 +3,9 @@ package problems.array;
 /**
  * Half of array is always sorted. Since we now start of sorted array and end we can check if
  * value is in range if not move to opposite side and again check fo sorted boundaries.
+ *
+ * Check for the sorted half and then check if the value is in borders of that half.
+ * If element is in boundaries proceed as usual binary search. If not we can skip this part as for sure there is no element.
  */
 public class SearchInRotatedArray {
 
@@ -32,7 +35,6 @@ public class SearchInRotatedArray {
             }
         }
     }
-
 
     public static void main(String[] args) {
         SearchInRotatedArray s = new SearchInRotatedArray();
