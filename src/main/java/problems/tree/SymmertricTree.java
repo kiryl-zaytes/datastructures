@@ -16,6 +16,18 @@ public class SymmertricTree {
         TreeNode(int x) { val = x; }
     }
 
+
+    public static boolean isSumetric(TreeNode root) {
+        return helper(root.left, root.right);
+    }
+
+    private static boolean helper(TreeNode l, TreeNode r) {
+        if (l == null && r == null) return true;
+        if (l == null || r == null) return false;
+        return (l.val == r.val) && helper(l.left, r.right) &&
+                helper(l.right, r.left);
+    }
+
     public static boolean isSymmetric(TreeNode root) {
         if (root == null) return true;
 
@@ -58,7 +70,7 @@ public class SymmertricTree {
 //        g2.left = new TreeNode(4);
         g2.right = new TreeNode(3);
 
-
+        System.out.print(SymmertricTree.isSumetric(r));
         System.out.print(SymmertricTree.isSymmetric(r));
     }
 

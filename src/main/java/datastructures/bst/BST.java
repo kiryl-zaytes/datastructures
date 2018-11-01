@@ -1,5 +1,8 @@
 package datastructures.bst;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by kiryl_zayets on 9/14/18.
  */
@@ -60,6 +63,24 @@ public class BST<K extends Comparable<K>, V> {
 
     public static void main(String[] args) {
         BST<String, Integer> bst = new BST<String, Integer>();
+
+    }
+
+
+    public List<Integer> preorderTraversal(Node root) {
+        ArrayList<Integer> res = new ArrayList();
+        if (root == null) return res;
+        helper(res, root);
+        return res;
+
+    }
+
+    private void helper(List<Integer> storage, Node root){
+
+        if (root == null) return;
+        storage.add((Integer) root.value);
+        helper(storage, root.left);
+        helper(storage, root.right);
 
     }
 }

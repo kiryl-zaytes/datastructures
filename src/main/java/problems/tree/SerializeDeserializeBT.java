@@ -24,7 +24,6 @@ public class SerializeDeserializeBT {
         StringBuffer ser = new StringBuffer();
         queue.add(root);
         ser.append(String.valueOf(root.val));
-       // ser.append(',');
         while (!queue.isEmpty()) {
             int layers = queue.size();
 

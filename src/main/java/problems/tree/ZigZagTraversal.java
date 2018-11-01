@@ -36,10 +36,10 @@ public class ZigZagTraversal {
         while (!storage.isEmpty()) {
             int l = storage.size();
             TreeNode tr;
-            ArrayList<Integer> intr = new ArrayList<>();
+            List<Integer> intr = new LinkedList<>();
             for (int i = 0; i < l; i++) {
                 tr = storage.poll();
-                if (run % 2 == 0) intr.add(0, tr.val);
+                if (run % 2 == 0) intr.add(0, tr.val); // check for linked list
                 else intr.add(tr.val);
                 if (tr.left != null) storage.add(tr.left);
                 if (tr.right != null) storage.add(tr.right);
