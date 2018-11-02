@@ -29,6 +29,26 @@ public class ValidateBinaryTree {
                 .right, minVal, root.val));
     }
 
+
+    private boolean validate(TreeNode root, int min, int max){
+        if (root == null) return true;
+        if ((min < root.val) || (max > root.val)) return false;
+        return validate(root.left, min, root.val) && validate(root.right, root.val, max);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static void main(String[] args) {
         TreeNode r = new TreeNode(5);
         TreeNode g1 = new TreeNode(1);
