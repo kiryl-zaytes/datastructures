@@ -55,5 +55,4 @@ public class Isomorphic {
         System.out.print(is.isIsomorphic("paper", "title"));
     }
 
-
 }
