@@ -1,7 +1,5 @@
 package problems.array;
 
-import java.util.Arrays;
-
 /**
  * Good solution is to keep two pointers one is storing position where to put unique
  * num and the other one is looking ahead to find next unique num in array.
@@ -10,24 +8,6 @@ import java.util.Arrays;
  * Stop when fast index reaches the end of array.
  */
 public class RemoveDuplicates {
-
-    public static int removeDuplicates(int[] nums) {
-        if (nums.length == 1) return 1;
-
-        for (int i = 0; i < nums.length - 1; i++) {
-
-            if (nums[i] == nums[i + 1]) {
-                nums[i] = Integer.MAX_VALUE;
-            }
-        }
-        Arrays.sort(nums);
-
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == Integer.MAX_VALUE) return i;
-        }
-
-        return nums.length;
-    }
 
     public static int removeDuplicates1(int[] nums) {
         if (nums.length == 1) return 1;

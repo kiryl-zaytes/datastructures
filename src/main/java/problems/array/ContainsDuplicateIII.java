@@ -1,4 +1,4 @@
-package problems.tree;
+package problems.array;
 
 import java.util.TreeSet;
 

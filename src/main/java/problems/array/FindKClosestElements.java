@@ -9,15 +9,12 @@ import java.util.List;
 public class FindKClosestElements {
 
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        ArrayList arrayList= new ArrayList<>();
+        ArrayList<Integer> arrayList= new ArrayList<>();
         int l = 0;
         int h = arr.length - k;
 
-
         while (l < h){
-
             int m = l + (h-l)/2;
-
             if (x - arr[m] > arr[m+k]-x) l = m+1;
             else h = m;
         }
