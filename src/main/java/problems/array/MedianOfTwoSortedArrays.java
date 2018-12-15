@@ -61,7 +61,6 @@ public class MedianOfTwoSortedArrays {
         throw new IllegalArgumentException();
     }
 
-
     public static void main(String[] args){
 
         MedianOfTwoSortedArrays mos = new MedianOfTwoSortedArrays();
