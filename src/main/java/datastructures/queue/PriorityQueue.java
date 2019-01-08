@@ -24,13 +24,13 @@ public class PriorityQueue<T extends Comparable<T>> {
         binaryHeap = new ArrayList<>();
     }
 
-    public PriorityQueue(List<T> list) {
-        list.add(list.get(0));
-        list.remove(0);
-        bottomUp(list);
-        this.N = list.size();
-        this.binaryHeap = (ArrayList<T>) list;
-    }
+//    public PriorityQueue(Comparator<T> list) {
+//        list.add(list.get(0));
+//        list.remove(0);
+//        bottomUp(list);
+//        this.N = list.size();
+//        this.binaryHeap = (ArrayList<T>) list;
+//    }
 
     public boolean isEmpty() {
         return (N == 0);

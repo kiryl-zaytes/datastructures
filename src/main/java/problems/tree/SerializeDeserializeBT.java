@@ -48,34 +48,24 @@ public class SerializeDeserializeBT {
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        if (data==null || data.length() == 0 || data=="") return null;
-        int l = 1;
-        int r = 2;
+        if (data == null || data.length() == 0 || data == "") return null;
         String[] d = data.split(",");
         TreeNode head = new TreeNode(Integer.valueOf(d[0]));
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(head);
 
-        for (int i = 0; i < d.length; i++) {
+        for (int i = 0; i < d.length; i += 2) {
 
             if (!queue.isEmpty()) {
                 TreeNode node = queue.poll();
-                if (!d[l].equals("|")) {
-                    node.left = new TreeNode(Integer.valueOf(d[l]));
+                if (!d[i + 1].equals("|")) {
+                    node.left = new TreeNode(Integer.valueOf(d[i + 1]));
                     queue.add(node.left);
-                    l += 2;
-                } else {
-                    i++;
-                    l += 2;
                 }
 
-                if (!d[r].equals("|")) {
-                    node.right = new TreeNode(Integer.valueOf(d[r]));
+                if (!d[i + 2].equals("|")) {
+                    node.right = new TreeNode(Integer.valueOf(d[i + 2]));
                     queue.add(node.right);
-                    r += 2;
-                } else {
-                    i++;
-                    r += 2;
                 }
             }
         }
@@ -88,7 +78,6 @@ public class SerializeDeserializeBT {
 
         a.add(10, 10);
         a.add(0, 5);
-
 
 
         TreeNode r = new TreeNode(0);

@@ -60,7 +60,7 @@ public class KthLargestInArray {
     }
 
 
-    public int findKthLargest(int[] nums, int k) {
+    public int findKthLargest1(int[] nums, int k) {
         if (nums.length == 1) return nums[0];
         MaxQueue maxQueue = new MaxQueue(nums);
         maxQueue.toBinaryHeap();
@@ -73,9 +73,50 @@ public class KthLargestInArray {
     }
 
 
+    public int findKthLargest(int[] nums, int k) {
+        int l = 0;
+        int h = nums.length-1;
+        k = nums.length - k;
+
+        while (l < h){
+            int p = partition(nums, l, h);
+            if (p > k) h = p-1;
+            else if (p < k) l = p+1;
+            else break;
+        }
+        return nums[k];
+    }
+
+
+    public int partition(int[] nums, int l, int h){
+        int i = l;
+        int j = h+1;
+
+        while (true){
+            while (i < h && less(nums, ++i, l));
+            while (j > l && less(nums, l, --j));
+            if (i >= j) break;
+            exchange(nums, i, j);
+        }
+        exchange(nums, l, j);
+        return j;
+    }
+
+    private boolean less(int[] nums, int x, int y){
+        return nums[x] < nums[y];
+    }
+
+    private void exchange(int[] nums, int x, int y){
+        int b = nums[x];
+        nums[x] = nums[y];
+        nums[y] = b;
+    }
+
+
     public static void main(String[] args) {
         KthLargestInArray kth = new KthLargestInArray();
-        kth.findKthLargest(new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6}, 4);
+       System.out.print(kth.findKthLargest(new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6}, 4));
+//        kth.partition(new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6}, 0, 8);
     }
 
 }
