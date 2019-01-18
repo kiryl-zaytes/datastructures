@@ -44,13 +44,22 @@ public class ReverseLinkedList {
     }
 
 
+    public static ListNode reverse(ListNode root){
+        if (root.next == null) return root;
+        ListNode n = root.next;
+        ListNode head = reverse(n);
+        n.next = root;
+        root.next = null;
+        return head;
+    }
+
     public static void main(String[] args) {
         ListNode N = new ListNode<Integer>(1);
         N.next = new ListNode<Integer>(2);
         N.next.next = new ListNode<Integer>(3);
         N.next.next.next = new ListNode<Integer>(4);
         N.next.next.next.next = new ListNode<Integer>(5);
-        ListNode n = ReverseLinkedList.reverseRec(N);
+        ListNode n = ReverseLinkedList.reverse(N);
         System.out.print("");
     }
 }
