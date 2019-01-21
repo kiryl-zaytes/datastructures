@@ -13,7 +13,9 @@ public class WordLadderII {
     public List<List<String>> findLadders(String beginWord,
             String endWord,
             List<String> wordList) {
+
         ladderLength(beginWord, endWord, wordList);
+
         ArrayList<List<String>> res = new ArrayList<>();
         distance.put(beginWord, 0);
         getSequences(beginWord, endWord, new ArrayList<>(), res);
