@@ -27,7 +27,7 @@ public class CountCompleteNodes {
         else return (int) Math.pow(2, h-1) + countNodes(root.left);
 
     }
-    
+
     private void helper(TreeNode root){
         if (root != null) count++;
         if (root == null) return;
