@@ -27,7 +27,7 @@ public class MaxSubArray {
         else return max;
     }
 
-    public static int maxSubArray(int[] n) {
+    public static int maxSubArray1(int[] n) {
         if (n.length == 0) return 0;
         int max = n[0];
         int currentMax = n[0];
@@ -38,6 +38,22 @@ public class MaxSubArray {
             max = Math.max(currentMax, max);
         }
         return max;
+    }
+
+
+    public static  int maxSubArray(int[] n){
+
+        int max = n[0];
+
+        int great = n[0];
+
+        for(int i=1; i<n.length;i++){
+            max = Math.max(n[i], n[i]+max);
+            great = Math.max(great, max);
+        }
+
+        return great;
+
     }
 
 
