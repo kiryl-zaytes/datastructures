@@ -1,6 +1,7 @@
 package datastructures.queue;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class PriorityQueue<T extends Comparable<T>> {
     ArrayList<T> binaryHeap;
     int N = 0;
 
-    public PriorityQueue() {
+    public PriorityQueue(Comparator comparator) {
         binaryHeap = new ArrayList<>();
     }
 
