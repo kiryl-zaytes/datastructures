@@ -1,10 +1,13 @@
 package problems.array;
 
 /**
- * Good solution is to keep two pointers one is storing position where to put unique
+ * Good solution is to keep two pointers one is storing position where to put
+ * unique
  * num and the other one is looking ahead to find next unique num in array.
- * When previous not equal next event occurs you need to rewrite slow index position and increment.
- * If there is no duplicates you should rewrite current position with same num to move forward.
+ * When previous not equal next event occurs you need to rewrite slow index
+ * position and increment.
+ * If there is no duplicates you should rewrite current position with same
+ * num to move forward.
  * Stop when fast index reaches the end of array.
  */
 public class RemoveDuplicates {
@@ -13,8 +16,8 @@ public class RemoveDuplicates {
         if (nums.length == 1) return 1;
         int l = 0;
         int h = 0;
-        while (h < nums.length){
-            if ( h==0 || (nums[h] != nums[h-1])){
+        while (h < nums.length) {
+            if (h == 0 || (nums[h] != nums[h - 1])) {
                 nums[l] = nums[h];
                 l++;
             }
@@ -23,8 +26,28 @@ public class RemoveDuplicates {
         return l;
     }
 
+    public static int removeDuplicatesII(int[] nums) {
+
+        int h = 1;
+        int l = 1;
+        int cnt = 1;
+
+        while (h < nums.length) {
+
+            if (nums[h] != nums[h - 1]) {
+                cnt = 1;
+                nums[l++] = nums[h];
+            } else if (cnt < 2) {
+                cnt++;
+                nums[l++] = nums[h];
+            }
+            h++;
+        }
+        return l;
+    }
+
     public static void main(String[] args) {
-        int res = removeDuplicates1(new int[]{1, 1, 2, 2, 3, 3, 3, 3, 4, 5});
+        int res = removeDuplicatesII(new int[]{1, 1,1, 2,2,2,2,2,2,2,2, 2, 3, 3, 3, 3, 4, 5});
         System.out.print(res);
     }
 

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
+ * Given a matrix of m x n elements (m rows, n columns), return all elements
+ * of the matrix in spiral order.
  */
 public class SpiralOrder {
 
@@ -17,7 +18,7 @@ public class SpiralOrder {
         int col = matrix[0].length;
         int size = row * col;
 
-        int repeat = (int) Math.ceil((double) (row * col) / (row+col));
+        int repeat = (int) Math.ceil((double) (row * col) / (row + col));
 
         int i = 0;
         int j = 0;
@@ -32,16 +33,16 @@ public class SpiralOrder {
                 total++;
             }
 
-            i = l+1;
+            i = l + 1;
 
             if (total == size) break;
 
-            j = l+1;
+            j = l + 1;
             while (j < row & total != size) {
                 res.add(matrix[j++][col - 1]);
                 total++;
             }
-            j = i+1;
+            j = i + 1;
             if (total == size) break;
 
             while (k > l) {
@@ -60,6 +61,40 @@ public class SpiralOrder {
             col = col - 1;
             k = col - 1;
             h = row - 1;
+        }
+
+        return res;
+    }
+
+
+    public static List<Integer> spiralOrder1(int[][] matrix) {
+
+        boolean[][] seen = new boolean[matrix.length][matrix[0].length];
+        int[][] directions = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+
+        int items = matrix.length * matrix[0].length;
+
+        ArrayList<Integer> res = new ArrayList<>();
+
+        int di = 0;
+        int r = 0;
+        int c = 0;
+
+        for(int i=0; i < items; i++){
+            seen[r][c] = true;
+            res.add(matrix[r][c]);
+            int rr = r + directions[di][0];
+            int cc = c + directions[di][1];
+
+            if (rr < matrix.length && rr >= 0 && cc < matrix[0].length && cc >=0 && !seen[rr][cc]){
+                r = rr;
+                c = cc;
+            }
+            else {
+                di = (di + 1) % 4;
+                r = r + directions[di][0];
+                c = c + directions[di][1];
+            }
         }
 
         return res;

@@ -1,9 +1,6 @@
 package problems.array;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by kiryl_zayets on 10/4/18.
@@ -59,15 +56,45 @@ public class MergeIntervals {
         return res;
     }
 
+
+
+
+
+    public List<Interval> merge1(List<Interval> intervals) {
+
+
+        ArrayList<Interval> res = new ArrayList<>();
+        if(intervals.size() == 0) return res;
+
+        Collections.sort(intervals, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval o1, Interval o2) {
+                return o1.start - o2.start;
+            }
+        });
+
+
+        for(Interval interval : intervals){
+            if (res.size() == 0 || res.get(res.size()-1).end < interval.start ){
+                res.add(interval);
+                continue;
+            }
+            Interval tmp = res.get(res.size() - 1);
+            tmp.end =  Math.max(tmp.end, interval.end);
+        }
+        return res;
+    }
+
+
     public static void main(String[] args) {
         MergeIntervals mergeIntervals = new MergeIntervals();
         ArrayList inter = new ArrayList<Interval>();
         inter.add(new Interval(1, 4));
-        inter.add(new Interval(0, 2));
-        inter.add(new Interval(3, 5));
+        inter.add(new Interval(4, 5));
+//        inter.add(new Interval(8, 10));
 //        inter.add(new Interval(15, 18));
 
-        mergeIntervals.merge(inter);
+        mergeIntervals.merge1(inter);
 
     }
 

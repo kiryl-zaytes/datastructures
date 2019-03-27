@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by kiryl_zayets on 1/21/19.
  */
-public class GenerateTrees {
+public class    GenerateTrees {
 
     public static class TreeNode {
         int val;

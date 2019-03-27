@@ -20,15 +20,17 @@ public class NextRightPointer {
         if (root == null) return;
         Queue<TreeLinkNode> queue = new LinkedList<>();
         queue.add(root);
-        root.next=null;
+      //  root.next=null;
         while (!queue.isEmpty()) {
             int l = queue.size();
-            LinkedList<TreeLinkNode> intr = new LinkedList();
+          //  LinkedList<TreeLinkNode> intr = new LinkedList();
             for (int i = 0; i < l; i++) {
                 TreeLinkNode n = queue.poll();
-                if (intr.size() != 0) intr.getLast().next = n;
-                if (i==l-1) n.next = null;
-                intr.addLast(n);
+
+                n.next = queue.peek();
+          //      if (intr.size() != 0) intr.getLast().next = n;
+            //    if (i==l-1) n.next = null;
+             //   intr.addLast(n);
                 if (n.left != null) queue.add(n.left);
                 if (n.right != null) queue.add(n.right);
             }

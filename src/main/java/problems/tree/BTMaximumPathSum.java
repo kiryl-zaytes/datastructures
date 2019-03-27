@@ -16,7 +16,7 @@ public class BTMaximumPathSum {
 
     int max = Integer.MIN_VALUE;
 
-    public int maxPathSum(TreeNode root) {
+    public int maxPathSum1(TreeNode root) {
         if (root == null) return 0;
         helper(root);
         return max;
@@ -38,17 +38,33 @@ public class BTMaximumPathSum {
     }
 
 
+    public int maxPathSum(TreeNode root) {
+        if (root == null) return 0;
+
+        int left = maxPathSum(root.left);
+        int right = maxPathSum(root.right);
+
+        max = Math.max(left + root.val, max);
+        max = Math.max(right + root.val, max);
+        max = Math.max(max, Math.max(root.val, root.val + left + right));
+
+        return Math.max(Math.max(root.val, left + root.val), right + root.val);
+
+    }
+
+
     public static void main(String[] args){
         BTMaximumPathSum bt = new BTMaximumPathSum();
 
-        TreeNode r = new TreeNode(-10);
-        TreeNode g1 = new TreeNode(9);
-        TreeNode g2 = new TreeNode(20);
+        TreeNode r = new TreeNode(1);
+        TreeNode g1 = new TreeNode(2);
+        TreeNode g2 = new TreeNode(3);
         r.left = g1;
         r.right = g2;
-        g2.left = new TreeNode(15);
-        g2.right = new TreeNode(7);
-        bt.helper(r);
+      //  g2.left = new TreeNode(15);
+        //g2.right = new TreeNode(7);
+        bt.maxPathSum(r);
+        System.out.print(bt.max);
     }
 
 }

@@ -59,6 +59,6 @@ public class FirstMissingPos {
 
         FirstMissingPos fmp = new FirstMissingPos();
 
-        System.out.print(fmp.getMissingPos(new int[]{7,8,9,11,12}));
+        System.out.print(fmp.getMissingPos(new int[]{0,1,2}));
     }
 }

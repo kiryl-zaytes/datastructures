@@ -5,7 +5,7 @@ package problems.array;
  */
 public class TrappingRainWater {
 
-    public int trap(int[] height) {
+    public int trap1(int[] height) {
 
         int l = 0;
         int h = height.length - 1;
@@ -27,6 +27,35 @@ public class TrappingRainWater {
                 else res+=rightMax - height[h];
                 h--;
             }
+        }
+        return res;
+    }
+    public int trap(int[] height) {
+
+        int leftMax = 0;
+        int rightMax = 0;
+        int res = 0;
+
+
+        int l =0;
+        int h = height.length-1;
+
+        while( l < h){
+
+            if (height[l] < height[h]){
+
+                if (height[l] > leftMax) leftMax = height[l];
+                else res += leftMax - height[l];
+                l++;
+            }
+
+            else {
+
+                if (height[h] > rightMax) rightMax = height[h];
+                else res += rightMax - height[h];
+                h--;
+            }
+
         }
         return res;
     }

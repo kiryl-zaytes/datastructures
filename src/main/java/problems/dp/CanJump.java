@@ -1,14 +1,16 @@
 package problems.dp;
 
 /**
- * Greedy technique, set first as max and then each step check if we could reach that position with
- * previous max value if so check once again if current pos + value > prev max val.
+ * Greedy technique, set first as max and then each step check if we could
+ * reach that position with
+ * previous max value if so check once again if current pos + value > prev
+ * max val.
  * If max > array length return true.
  */
 public class CanJump {
 
 
-    public boolean canJump(int[] nums) {
+    public boolean canJump1(int[] nums) {
         int maxJump = nums[0];
 
         for (int i = 1; i < nums.length; i++) {
@@ -18,6 +20,19 @@ public class CanJump {
         }
         return true;
 
+    }
+
+    public boolean canJump(int[] nums) {
+        if (nums.length == 0) return false;
+        if (nums.length == 1) return true;
+        int maxJump = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (maxJump+i >= nums.length) return true;
+            if (maxJump==0) return false;
+            maxJump = Math.max(--maxJump, nums[i]);
+        }
+
+        return false;
     }
 
 
