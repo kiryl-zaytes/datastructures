@@ -22,13 +22,8 @@ public class LongestConsecSeq {
             int start = i;
             if (!set.contains(i - 1)) {
                 int val = i + 1;
-
-                while (set.contains(val)) {
-                    val++;
-
-                }
+                while (set.contains(val)) val++;
                 if (val - start > greatestSeq) greatestSeq = val - start;
-
             }
         }
 

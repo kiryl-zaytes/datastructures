@@ -6,7 +6,7 @@ package problems.other;
 public class MissingNumber {
 
 
-    public static int missingNumber(int[] nums) {
+    public static int missingNumber1(int[] nums) {
         if (nums.length == 0) return 0;
         if (nums.length == 1 && nums[0] == 0) return ++nums[0];
         else if (nums.length == 1) return --nums[0];
@@ -35,9 +35,32 @@ public class MissingNumber {
 
     }
 
+    public static int missingNumber(int[] nums) {
+
+        for(int i=0; i < nums.length; i++){
+            if (i == nums[i]) continue;
+            int next = nums[i];
+            while(next < nums.length && next != nums[next]){
+                if(nums[next] >= nums.length){
+                    nums[next] = next;
+                    break;
+                }
+                int b = nums[next];
+                nums[next] = next;
+                next = b;
+            }
+        }
+
+        for(int i=0; i < nums.length; i++){
+            if (i != nums[i]) return i;
+        }
+
+        return -1;
+    }
+
 
     public static void main(String[] args) {
-        System.out.print(MissingNumber.missingNumber(new int[]{1,2,4}));
+        System.out.print(MissingNumber.missingNumber(new int[]{1,0,3}));
     }
 
 }
