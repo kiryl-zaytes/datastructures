@@ -10,7 +10,7 @@ import java.util.PriorityQueue;
  */
 public class LeastInterval {
 
-    public int leastInterval(char[] tasks, int n) {
+    public int leastInterval1(char[] tasks, int n) {
 
         int[] storage = new int[26];
 
@@ -23,21 +23,62 @@ public class LeastInterval {
         int count = 0;
 
         while (!pq.isEmpty()){
-
-            int gap = n;
-
+            int gap = 0;
             ArrayList<Integer> tmp = new ArrayList<>();
-            while (!pq.isEmpty() && gap >= 0){
-                if (pq.peek() > 0) tmp.add(pq.poll()-1);
-                else pq.poll();
+
+            while (gap <= n){
+                if (!pq.isEmpty()){
+                    if (pq.peek() > 1) tmp.add(pq.poll()-1);
+                    else pq.poll();
+                }
                 count++;
-                gap--;
+                if (pq.isEmpty() && tmp.size() == 0) break;
+                gap++;
             }
 
             for(Integer in : tmp) pq.add(in);
 
         }
         return count;
+    }
+
+
+    public int leastInterval(char[] tasks, int n) {
+
+        int[] chars = new int[26];
+
+        for(char c : tasks) chars[c - 'A']++;
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+
+        for(int nn : chars) if (nn > 0) pq.offer(nn);
+
+        int res = 0;
+
+        while(!pq.isEmpty()){
+            int delta = 0;
+            ArrayList<Integer> tmp = new ArrayList<>();
+
+            while (delta <= n){
+
+                if (!pq.isEmpty()){
+                    if (pq.peek() > 1) tmp.add(pq.poll()-1);
+                    else pq.poll();
+                }
+                res++;
+                delta++;
+            }
+
+            for(int i:tmp) pq.offer(i);
+        }
+
+        return res;
+    }
+
+
+    public static void main(String[] args){
+        LeastInterval li = new LeastInterval();
+        li.leastInterval(new char[]{'A', 'A', 'A', 'B', 'B', 'B'}, 2);
     }
 
 }

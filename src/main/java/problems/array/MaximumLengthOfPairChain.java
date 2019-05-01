@@ -8,7 +8,7 @@ import java.util.Comparator;
  */
 public class MaximumLengthOfPairChain {
 
-    public int findLongestChain(int[][] pairs) {
+    public int findLongestChain1(int[][] pairs) {
 
         Arrays.sort(pairs, new Comparator<int[]>() {
             @Override
@@ -27,6 +27,30 @@ public class MaximumLengthOfPairChain {
             }
         }
         return count;
+    }
+
+    public int findLongestChain(int[][] pairs) {
+        Arrays.sort(pairs, new Comparator<int[]>(){
+            @Override
+            public int compare(int[] a, int[] b){
+                if (a[1] > b[1]) return 1;
+                else if (a[1] < b[1]) return -1;
+                else return 0;
+            }
+        });
+
+        int border = Integer.MIN_VALUE;
+        int count = 0;
+
+        for(int[] p : pairs){
+            if (p[0] > border) {
+                count++;
+                border = p[1];
+            }
+        }
+
+        return count;
+
     }
 
 

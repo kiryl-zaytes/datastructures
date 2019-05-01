@@ -28,8 +28,8 @@ public class FindUnsortedSubArr {
         int l = 0;
         int h = nums.length-1;
 
-        while(l < nums.length-1 && min > nums[l]) l++;
-        while(h > 0 && max < nums[h]) h--;
+        while(l < nums.length-1 && min >= nums[l]) l++;
+        while(h > 0 && max <= nums[h]) h--;
 
         return h - l < 0 ? 0 : h - l + 1;
 

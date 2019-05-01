@@ -26,6 +26,17 @@ public class ClimbStairs {
         memo[n] = r;
         return r;
     }
+    public int minCostClimbingStairs(int[] cost) {
+
+        int[] dp = new int[cost.length];
+        dp[0] = cost[0];
+        dp[1] = cost[1];
+
+        for(int i=2; i<cost.length; i++) dp[i] = Math.min(cost[i] + dp[i-1], cost[i] + dp[i-2]);
+
+        return dp[dp.length-1];
+
+    }
 
 
     public static void main(String[] args) {
@@ -36,6 +47,7 @@ public class ClimbStairs {
 //        };
 
         ClimbStairs climbStairs = new ClimbStairs();
+        climbStairs.minCostClimbingStairs(new int[]{0,0,0,1});
         System.out.print(climbStairs.climbStairs(j));
 
     }

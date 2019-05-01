@@ -1,7 +1,7 @@
 package problems.tree;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.*;
 
 /**
  * Created by kiryl_zayets on 9/26/18.
@@ -31,6 +31,70 @@ public class InorderTraversal {
         helper(root.right, l);
     }
 
+    public static void inorderIterative(TreeNode node) {
+        if (node == null) return;
+        Deque<TreeNode> deque = new ArrayDeque<>();
+        TreeNode p = node;
+
+        while (!deque.isEmpty() || p != null) {
+
+            if (p != null) {
+                deque.push(p);
+                p = p.left;
+            } else {
+                TreeNode res = deque.pop();
+                System.out.println(res.val);
+                p = res.right;
+            }
+        }
+    }
+
+
+    public static void postOrder(TreeNode node) {
+        if (node == null) return;
+
+        LinkedList<TreeNode> res = new LinkedList<>();
+
+        TreeNode p = node;
+
+        Deque<TreeNode> stack = new ArrayDeque<>();
+
+        while (!stack.isEmpty() || p != null) {
+
+            if (p != null){
+                res.addFirst(p);
+                stack.push(p);
+                p = p.right;
+            }
+            else {
+                TreeNode tmp = stack.pop();
+                p = tmp.left;
+            }
+
+        }
+    }
+
+    public static void preorderIterative(TreeNode node) {
+        if (node == null) return;
+
+        Deque<TreeNode> stack = new ArrayDeque<>();
+
+        TreeNode p = node;
+
+        while (!stack.isEmpty() || p != null) {
+
+            if (p != null) {
+                System.out.println(p.val);
+                stack.push(p);
+                p = p.left;
+            } else {
+                TreeNode tmp = stack.pop();
+                p = tmp.right;
+            }
+
+        }
+    }
+
 
     public static void main(String[] args) {
         TreeNode r = new TreeNode(1);
@@ -43,6 +107,7 @@ public class InorderTraversal {
         g1.left = g2;
 
         InorderTraversal.inorderTraversal(r);
+        InorderTraversal.inorderIterative(r);
     }
 
 

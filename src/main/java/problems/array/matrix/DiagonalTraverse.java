@@ -1,5 +1,8 @@
 package problems.array.matrix;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /**
  * Created by kiryl_zayets on 2/22/19.
  */
@@ -41,6 +44,17 @@ public class DiagonalTraverse {
                 }
             }
         }
+        PriorityQueue<Integer[]> q = new PriorityQueue<>(new Comparator<Integer[]>() {
+
+            @Override
+            public int compare(Integer[] o1, Integer[] o2) {
+                return 0;
+            }
+
+        });
+
+
+
         return res;
     }
 }
