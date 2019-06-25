@@ -12,7 +12,7 @@ package problems.string;
  */
 public class MaximumWindowSubst {
 
-    public String minWindow(String s, String t) {
+    public String minWindow1(String s, String t) {
 
         int[] map = new int[128];
         for (char c : t.toCharArray()) map[c]++;
@@ -50,10 +50,47 @@ public class MaximumWindowSubst {
 
     }
 
+    public String minWindow(String s, String t) {
+
+        int[] storage = new int[256];
+        int l = t.length();
+        int slow = 0;
+        int fast = 0;
+        int maxLength = Integer.MAX_VALUE;
+        String res = "";
+
+
+        for(int i=0; i < t.length(); i++) storage[t.charAt(i)]++;
+
+        while(fast < s.length()){
+
+            if(storage[s.charAt(fast)] > 0) l--;
+            storage[s.charAt(fast)]--;
+            fast++;
+
+            while(l==0){
+
+                if (fast - slow < maxLength){
+                    maxLength = fast - slow;
+                    res = s.substring(slow, fast);
+                }
+
+                storage[s.charAt(slow)]++;
+                if(storage[s.charAt(slow)] > 0) l++;
+                slow++;
+
+            }
+
+        }
+
+        return res;
+
+    }
+
 
     public static void main(String[] args) {
         MaximumWindowSubst mws = new MaximumWindowSubst();
-        System.out.print(mws.minWindow("cabwefgewcwaefgcf", "cae"));
+        System.out.print(mws.minWindow("ADOBECODEBANC", "ABC"));
     }
 
 }

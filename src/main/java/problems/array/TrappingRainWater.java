@@ -32,39 +32,34 @@ public class TrappingRainWater {
     }
     public int trap(int[] height) {
 
-        int leftMax = 0;
-        int rightMax = 0;
-        int res = 0;
-
-
-        int l =0;
+        int l = 0;
         int h = height.length-1;
 
-        while( l < h){
+        int leftMax = l;
+        int rightMax = height[h-1];
+        int water = 0;
 
-            if (height[l] < height[h]){
+        while(l < h){
 
-                if (height[l] > leftMax) leftMax = height[l];
-                else res += leftMax - height[l];
-                l++;
-            }
-
-            else {
-
-                if (height[h] > rightMax) rightMax = height[h];
-                else res += rightMax - height[h];
+            if(height[l] >= height[h]){
+                rightMax = Math.max(rightMax, height[h]);
+                water+= rightMax - height[h];
                 h--;
             }
-
+            else{
+                leftMax = Math.max(leftMax, height[l]);
+                water+=leftMax - height[l];
+                l++;
+            }
         }
-        return res;
+
+        return water;
+
     }
 
     public static void main(String[] args) {
-
         TrappingRainWater tr = new TrappingRainWater();
-        System.out.print(tr.trap(new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2,
-                1}));
+        System.out.print(tr.trap(new int[]{0,1,0,2,1,0,1,3,2,1,2,1}));
     }
 
 

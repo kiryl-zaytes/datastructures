@@ -7,7 +7,7 @@ public class FirstMissingPos {
 
     int[] test;
 
-    public int getMissingPos(int[] test) {
+    public int getMissingPos1(int[] test) {
         if (test.length == 0 ) return 1;
 
         this.test = test;
@@ -54,11 +54,36 @@ public class FirstMissingPos {
         test[m] = b;
     }
 
+    public int firstMissingPositive(int[] nums) {
+        if(nums.length == 0) return 1;
+        int min = Integer.MAX_VALUE;
+
+        for(int i=0; i < nums.length; i++) if(nums[i] > 0 && nums[i] < min) min = nums[i];
+
+        if(min > 1) return 1;
+
+        int index = 0;
+
+        while(index < nums.length && nums[index] != index && nums[index]>0){
+
+            if( nums[nums[index]-1] > nums.length) continue;
+            int tmp = nums[nums[index]-1];
+            nums[nums[index]-1] = nums[index];
+            index = tmp;
+        }
+
+        for(int i=0; i < nums.length; i++){
+            if (nums[i]-1 != i) return i+1;
+        }
+
+        return nums.length +1;
+    }
+
 
     public static void main(String[] args){
 
         FirstMissingPos fmp = new FirstMissingPos();
 
-        System.out.print(fmp.getMissingPos(new int[]{0,1,2}));
+        System.out.print(fmp.firstMissingPositive(new int[]{2,1}));
     }
 }

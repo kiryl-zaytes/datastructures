@@ -56,7 +56,41 @@ public class MergeIntervals {
         return res;
     }
 
+    public int[][] merge3(int[][] intervals) {
 
+        Arrays.sort(intervals, new Comparator<int[]>(){
+            @Override
+            public int compare(int[] a, int[] b){
+                return a[1] - b[1];
+            }
+        });
+
+        ArrayList<Integer[]> res = new ArrayList<>();
+        Integer[] lastAdded = null;
+
+
+
+        for(int i = intervals.length-1; i >=0; i--){
+            int[] tmp = intervals[i];
+            if(res.size() != 0) lastAdded = res.get(res.size()-1);
+            if(res.size() == 0 || lastAdded[0] > tmp[1]) res.add(new Integer[]{tmp[0], tmp[1]});
+            else{
+                lastAdded[0] = Math.min(lastAdded[0], tmp[0]);
+                lastAdded[1] =  Math.max(lastAdded[1], tmp[1]);
+            }
+        }
+
+
+        int[][] result = new int[res.size()][2];
+        int i=0;
+        for(Integer[] tmp: res){
+            result[i][0] = tmp[0];
+            result[i][1] = tmp[1];
+            i++;
+        }
+
+        return result;
+    }
 
 
 
@@ -89,12 +123,13 @@ public class MergeIntervals {
     public static void main(String[] args) {
         MergeIntervals mergeIntervals = new MergeIntervals();
         ArrayList inter = new ArrayList<Interval>();
-        inter.add(new Interval(1, 4));
-        inter.add(new Interval(4, 5));
+      //  inter.add(new Interval(1, 4));
+        //inter.add(new Interval(4, 5));
 //        inter.add(new Interval(8, 10));
 //        inter.add(new Interval(15, 18));
 
-        mergeIntervals.merge1(inter);
+     //   mergeIntervals.merge1(inter);
+        mergeIntervals.merge3(new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}});
 
     }
 
